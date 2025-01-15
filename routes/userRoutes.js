@@ -109,9 +109,6 @@ export default [
   {
     method: "POST",
     path: "/users/{id}",
-    options: {
-      auth: "jwt", // Requires a valid JWT
-    },
     handler: async (request, h) => {
       try {
         const userRole = request.auth.credentials.role;
@@ -127,7 +124,8 @@ export default [
         }
 
         const { id } = request.params; // Extract user ID from route parameters
-        const { name, email, password, role, locationId } = request.payload;
+        console.log(id);
+        const { userName, email, password, role, locationId } = request.payload;
 
         // Find the user to update
         const user = await models.User.findByPk(id);
@@ -141,7 +139,7 @@ export default [
         }
 
         // Update user details
-        user.name = name || user.name;
+        user.userName = userName || user.userName;
         user.email = email || user.email;
         user.password = password || user.password;
         user.role = role || user.role;

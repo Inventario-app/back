@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import models from "./models/index.js";
 import Jwt from "@hapi/jwt";
 import routes from "./routes/index.js";
+console.clear();
 
 dotenv.config();
 

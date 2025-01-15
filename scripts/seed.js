@@ -110,9 +110,10 @@ const seedDatabase = async () => {
         itemId: items[0].id,
         userId: createdUsers[0],
         locationId: locations[0].id,
-        quantityChanged: 10,
+        quantityChanged: https://github.com/Inventario-app/baco0,
         transactionType: "remove", // Manager took 10 Tomatoes
-      },
+      }st.md
+      ,
       {
         itemId: items[1].id,
         userId: createdUsers[1],

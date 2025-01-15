@@ -15,11 +15,15 @@ const Item = sequelize.define("Item", {
     type: DataTypes.INTEGER,
     defaultValue: 0,
   },
+  description: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
 });
 
 const [location, created] = await Item.findOrCreate({
   where: { name: "Bananas" },
-  defaults: { name: "Bananas" },
+  defaults: { name: "Bananas", description: "is just bananas" },
 });
 
 if (created) {

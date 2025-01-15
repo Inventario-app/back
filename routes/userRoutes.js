@@ -1,21 +1,18 @@
 import Sequelize from "sequelize";
 import models from "../models/index.js";
 import Hapi from "@hapi/hapi";
+import { checkRole } from "../utils/checkRole.js";
 import Jwt from "@hapi/jwt";
+
 export default [
   //Get /users
   {
     method: "GET",
     path: "/users",
+    options: {
+      pre: [checkRole("manager")],
+    },
     handler: async (request, h) => {
-      const userRole = request.auth.credentials.role;
-      if (userRole != "manager") {
-        return h
-          .response({
-            message: "Sorry sir your rank in the guild is not prominent enough",
-          })
-          .code(403); // Forbidden
-      }
       const users = await models.User.findAll();
       return h.response(users);
     },
@@ -25,15 +22,10 @@ export default [
   {
     method: "POST",
     path: "/users",
+    options: {
+      pre: [checkRole("manager")],
+    },
     handler: async (request, h) => {
-      const userRole = request.auth.credentials.role;
-      if (userRole != "manager") {
-        return h
-          .response({
-            message: "Sorry sir your rank in the guild is not prominent enough",
-          })
-          .code(403); // Forbidden
-      }
       const { userName, email, password, role, locationId } = request.payload;
       try {
         const newUser = await models.User.create({
@@ -108,20 +100,9 @@ export default [
   {
     method: "PUT",
     path: "/users/{id}",
+    options: { pre: [checkRole("manager")] },
     handler: async (request, h) => {
       try {
-        const userRole = request.auth.credentials.role;
-
-        // Check if the user is a manager
-        if (userRole !== "manager") {
-          return h
-            .response({
-              message:
-                "Sir, you can not interfere with your fellow guild members",
-            })
-            .code(403); // Forbidden
-        }
-
         const { id } = request.params; // Extract user ID from route parameters
         console.log(id);
         const { userName, email, password, role, locationId } = request.payload;

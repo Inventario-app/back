@@ -1,4 +1,5 @@
 import models from "../models/index.js";
+import { checkRole } from "../utils/checkRole.js";
 
 export default [
   //GET /locations
@@ -15,15 +16,10 @@ export default [
   {
     method: "POST",
     path: "/locations",
+    options: {
+      pre: [checkRole("manager")],
+    },
     handler: async (request, h) => {
-      const userRole = request.auth.credentials.role;
-      if (userRole != "manager") {
-        return h
-          .response({
-            message: "Sorry sir your rank in the guild is not prominent enough",
-          })
-          .code(403); // Forbidden
-      }
       const { name } = request.payload;
 
       const existingLocation = await models.Location.findOne({
@@ -42,16 +38,10 @@ export default [
   {
     method: "PUT",
     path: "/locations/{id}",
+    options: {
+      pre: [checkRole("manager")],
+    },
     handler: async (request, h) => {
-      const userRole = request.auth.credentials.role;
-      if (userRole != "manager") {
-        return h
-          .response({
-            message: "Sorry sir your rank in the guild is not prominent enough",
-          })
-          .code(403); // Forbidden
-      }
-
       const { id } = request.params;
       const { name } = request.payload;
       const location = await models.Location.findByPk(id);
@@ -72,15 +62,10 @@ export default [
   {
     method: "DELETE",
     path: "/locations/{id}",
+    options: {
+      pre: [checkRole("manager")],
+    },
     handler: async (request, h) => {
-      const userRole = request.auth.credentials.role;
-      if (userRole != "manager") {
-        return h
-          .response({
-            message: "Sorry sir your rank in the guild is not prominent enough",
-          })
-          .code(403); // Forbidden
-      }
       const { id } = request.params;
       const location = await models.Location.findByPk(id);
 

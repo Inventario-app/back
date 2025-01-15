@@ -66,9 +66,6 @@ User.verifyPassword = async function (storedPassword, inputPassword) {
 const [location, created] = await User.findOrCreate({
   where: {
     userName: "admin",
-    email: "admin@admin.com",
-    password: "admin",
-    role: "manager",
   },
   defaults: {
     userName: "admin",

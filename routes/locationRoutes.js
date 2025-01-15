@@ -57,7 +57,9 @@ export default [
       const location = await models.Location.findByPk(id);
 
       if (!location) {
-        return h.response({ error: "Location not found" }).code(404);
+        return h
+          .response({ error: "I have no idea where that place is sir" })
+          .code(404);
       }
 
       location.name = name;

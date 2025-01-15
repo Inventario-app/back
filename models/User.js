@@ -63,11 +63,23 @@ User.verifyPassword = async function (storedPassword, inputPassword) {
     throw err;
   }
 };
-const admin = User.build({
-  userName: "admin",
-  email: "admin@admin.com",
-  password: "admin",
-  role: "manager",
+const [location, created] = await User.findOrCreate({
+  where: {
+    userName: "admin",
+    email: "admin@admin.com",
+    password: "admin",
+    role: "manager",
+  },
+  defaults: {
+    userName: "admin",
+    email: "admin@admin.com",
+    password: "admin",
+    role: "manager",
+  },
 });
-
+if (created) {
+  console.log("Admin created:", location);
+} else {
+  console.log("Admin already exists:", location);
+}
 export default User;

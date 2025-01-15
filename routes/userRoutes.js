@@ -20,6 +20,7 @@ export default [
       return h.response(users);
     },
   },
+
   // Post /users
   {
     method: "POST",
@@ -75,12 +76,10 @@ export default [
       // Find user by email
       const user = await models.User.findOne({ where: { email } });
       if (!user) {
-        console.log(
-          "Stop there you scoundrel, you do not belong to this guild",
-        );
         return h
           .response({
-            message: "Invalid credentials",
+            message:
+              "Stop there you scoundrel, you do not belong to this guild",
           })
           .code(401);
       }
@@ -105,9 +104,9 @@ export default [
     },
   },
 
-  //POST updateUser /users/{id}
+  //PUT /users/{id}
   {
-    method: "POST",
+    method: "PUT",
     path: "/users/{id}",
     handler: async (request, h) => {
       try {

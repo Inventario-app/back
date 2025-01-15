@@ -23,6 +23,73 @@ to help track inventory items, transactions, and users in a kitchen.
 - **Transaction Processing**: Record and manage inventory transactions, including additions and deductions.
 - **Role-Based Access Control**: Implement role-based access to ensure appropriate permissions for different user roles.
 
+## Data Schema Visualization:
+
+### 1.Location Table
+
+- Tracks physical or logical storage places.
+
+| `id` | `name`       |
+| ---- | ------------ |
+| 1    | Main Kitchen |
+| 2    | Pantry       |
+
+### 2.Users Table
+
+- Tracks users and their roles.
+
+| `id` | `name`  | `email`             | `password` | `role`  | `locationId` |
+| ---- | ------- | ------------------- | ---------- | ------- | ------------ |
+| 1    | Alice   | alice@example.com   | hashed_pw  | manager | 1            |
+| 2    | Bob     | bob@example.com     | hashed_pw  | staff   | 1            |
+| 3    | Charlie | charlie@example.com | hashed_pw  | manager | 2            |
+
+**Explanation**:
+
+- Alice and Bob belong to the Main Kitchen.
+- Charlie belongs to the Pantry.
+
+### 3.Items Table
+
+| `id` | `name` | `totalQuantity` |
+| ---- | ------ | --------------- |
+| 1    | Rice   | 50              |
+| 2    | Sugar  | 30              |
+
+-Track all items and their total quantities
+
+### 4. Items Location Table
+
+| `id` | `itemId` | `locationId` | `quantity` |
+| ---- | -------- | ------------ | ---------- |
+| 1    | 1        | 1            | 20         |
+| 2    | 1        | 2            | 30         |
+| 3    | 2        | 1            | 15         |
+| 4    | 2        | 2            | 15         |
+
+- Tracks item quantities at specific locations (Many-to-Many).
+  **Explanation**:
+- Rice (ID: 1) has:
+  - 20 units in the Main Kitchen (ID: 1).
+  - 30 units in the Pantry (ID: 2).
+- Sugar (ID: 2) has:
+
+  - 15 units in both locations.
+
+  ### 5. Transactions Table
+
+  | `id` | `itemId` | `userId` | `locationId` | `quantityChanged` | `transactionType` | `timestamp`         |
+  | ---- | -------- | -------- | ------------ | ----------------- | ----------------- | ------------------- |
+  | 1    | 1        | 1        | 1            | 10                | add               | 2025-01-13 12:00:00 |
+  | 2    | 2        | 2        | 1            | -5                | remove            | 2025-01-13 12:30:00 |
+
+  - Tracks changes made to item quantities, associated with users and locations.
+
+**Explanation**:
+
+- Transaction 1: Alice added 10 units of Rice in the Main Kitchen.
+- Transaction 2: Bob removed 5 units of Sugar in the Main Kitchen.
+
 ## Installation
 
 1. **Clone the Repository**:

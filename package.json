@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "nodemon",
+    "seed": "node ./scripts/seed.js",
+    "deleteDummy": "node ./scripts/deleteDummy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

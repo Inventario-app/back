@@ -16,6 +16,12 @@ export default [
     options: { pre: [checkRole("manager")] },
     handler: async (request, h) => {
       const { name, description } = request.payload;
+      const existingItem = await models.Item.findOne({
+        where: { name },
+      });
+      if (existingItem) {
+        return h.response({ message: "Item already exists" }).code(409); // Conflict
+      }
       const newItem = await models.Item.create({ name, description });
       return h.response(newItem).code(201);
     },

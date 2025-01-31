@@ -21,15 +21,4 @@ const Item = sequelize.define("Item", {
   },
 });
 
-const [location, created] = await Item.findOrCreate({
-  where: { name: "Bananas" },
-  defaults: { name: "Bananas", description: "is just bananas" },
-});
-
-if (created) {
-  console.log("Item created:", location);
-} else {
-  console.log("Item already exists:", location);
-}
-
 export default Item;

@@ -14,7 +14,7 @@ const init = async () => {
   });
 
   // Database sync
-  await models.sequelize.sync();
+  await models.sequelize.sync({ alter: true });
 
   // Add routes (placeholder for now)
   server.route({

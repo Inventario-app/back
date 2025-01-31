@@ -14,14 +14,4 @@ const Location = sequelize.define("Location", {
   },
 });
 
-const [location, created] = await Location.findOrCreate({
-  where: { name: "Main Location" },
-  defaults: { name: "Main Location" },
-});
-
-if (created) {
-  console.log("Location created:", location);
-} else {
-  console.log("Location already exists:", location);
-}
 export default Location;

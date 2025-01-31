@@ -1,7 +1,24 @@
 import models from "../models/index.js"; // Import Sequelize models
+import dotenv from "dotenv";
+import mysql from "mysql2/promise";
+
+dotenv.config();
+
+const DB_NAME = process.env.DB_NAME;
+async function ensureDatabaseExists() {
+  const connection = await mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+  });
+  await connection.query(`CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\`;`);
+  console.log(`Database '${DB_NAME}' ensured.`);
+  await connection.end();
+}
 
 const seedDatabase = async () => {
   try {
+    await ensureDatabaseExists();
     // Sync the database
     await models.sequelize.sync({ force: true }); // Drops tables if they already exist
 
@@ -110,10 +127,9 @@ const seedDatabase = async () => {
         itemId: items[0].id,
         userId: createdUsers[0],
         locationId: locations[0].id,
-        quantityChanged: https://github.com/Inventario-app/baco0,
+        quantityChanged: 10,
         transactionType: "remove", // Manager took 10 Tomatoes
-      }st.md
-      ,
+      },
       {
         itemId: items[1].id,
         userId: createdUsers[1],

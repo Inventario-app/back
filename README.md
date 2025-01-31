@@ -315,28 +315,24 @@ Response:
 ```json
 [
   {
-    "id": 1,
-    "name": "Tomato",
-    "description": "Fresh red tomatoes",
+    "id": 3,
+    "name": "Flour",
+    "totalQuantity": 100,
+    "description": "All-purpose flour",
+    "createdAt": "2025-01-31T04:03:11.000Z",
+    "updatedAt": "2025-01-31T04:03:11.000Z",
     "locations": [
       {
-        "locationId": 1,
-        "quantity": 100
+        "name": "Brooklyn",
+        "ItemLocation": {
+          "quantity": 50
+        }
       },
       {
-        "locationId": 2,
-        "quantity": 50
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "name": "Onion",
-    "description": "Yellow onions",
-    "locations": [
-      {
-        "locationId": 1,
-        "quantity": 200
+        "name": "Queens",
+        "ItemLocation": {
+          "quantity": 50
+        }
       }
     ]
   }

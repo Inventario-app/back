@@ -5,7 +5,15 @@ export default [
     method: "GET",
     path: "/items",
     handler: async (request, h) => {
-      const items = await models.Item.findAll({ include: "locations" });
+      const items = await models.Item.findAll({
+        include: {
+          association: "locations",
+          attributes: ["name"],
+          through: {
+            attributes: ["quantity"],
+          },
+        },
+      });
       return h.response(items);
     },
   },

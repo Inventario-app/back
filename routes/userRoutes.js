@@ -139,4 +139,26 @@ export default [
       }
     },
   },
+  {
+    method: "DELETE",
+    path: "/users/{id}",
+    options: {
+      pre: [checkRole("manager")],
+    },
+    handler: async (request, h) => {
+      const { id } = request.params;
+      const user = await models.User.findByPk(id);
+
+      if (!user) {
+        return h
+          .response({ error: "I have not heard that name around here" })
+          .code(404);
+      }
+
+      await user.destroy();
+      return h.response({
+        message: "That scoundrel will not set foot here again",
+      });
+    },
+  },
 ];

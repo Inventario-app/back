@@ -116,7 +116,8 @@ const seedDatabase = async () => {
     await models.ItemLocation.bulkCreate([
       { itemId: items[0].id, locationId: locations[0].id, quantity: 30 }, // 50 Tomatoes in Main Kitchen
       { itemId: items[1].id, locationId: locations[2].id, quantity: 35 }, // 30 Chicken in Freezer
-      { itemId: items[2].id, locationId: locations[1].id, quantity: 100 }, // 100 Flour in Pantry
+      { itemId: items[2].id, locationId: locations[1].id, quantity: 50 }, // 100 Flour in Pantry
+      { itemId: items[2].id, locationId: locations[2].id, quantity: 50 }, // 100 Flour in Pantry
     ]);
 
     console.log("Item-location relationships created!");

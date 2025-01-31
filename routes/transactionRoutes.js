@@ -7,9 +7,7 @@ export default [
     path: "/transactions",
     options: { pre: [checkRole("manager")] },
     handler: async (request, h) => {
-      const transactions = await models.Transaction.findAll({
-        include: ["user", "location", "item"],
-      });
+      const transactions = await models.Transaction.findAll();
       return h.response(transactions);
     },
   },

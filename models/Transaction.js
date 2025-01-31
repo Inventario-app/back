@@ -36,7 +36,7 @@ const Transaction = sequelize.define("Transaction", {
     allowNull: false,
   },
   transactionType: {
-    type: DataTypes.ENUM("add", "remove", "update"),
+    type: DataTypes.ENUM("add", "remove"),
     allowNull: false,
   },
   timestamp: {

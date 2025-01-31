@@ -405,7 +405,7 @@ Response:
     "userId": 2,
     "locationId": 1,
     "quantityChanged": 10,
-    "transactionType": "addition",
+    "transactionType": "remove",
     "timestamp": "2025-01-15T15:22:12Z"
   },
   {
@@ -414,7 +414,7 @@ Response:
     "userId": 1,
     "locationId": 2,
     "quantityChanged": 5,
-    "transactionType": "deduction",
+    "transactionType": "remove",
     "timestamp": "2025-01-14T14:20:10Z"
   }
 ]
@@ -430,7 +430,7 @@ Response:
   "userId": 2,
   "locationId": 1,
   "quantityChanged": 10,
-  "transactionType": "addition"
+  "transactionType": "add"
 }
 ```
 
@@ -443,7 +443,7 @@ Response:
   "userId": 2,
   "locationId": 1,
   "quantityChanged": 10,
-  "transactionType": "addition",
+  "transactionType": "add",
   "timestamp": "2025-01-15T15:22:12Z"
 }
 ```

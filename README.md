@@ -23,6 +23,66 @@ to help track inventory items, transactions, and users in a kitchen.
 - **Transaction Processing**: Record and manage inventory transactions, including additions and deductions.
 - **Role-Based Access Control**: Implement role-based access to ensure appropriate permissions for different user roles.
 
+## Prerequisites
+
+Before you can run the application, ensure that you have the following installed on your system:
+
+- Node.js (v14 or higher)
+- MySQL
+
+## Installing Dependencies
+
+1. **Clone the Repository**:
+
+   ```bash
+   git clone https://github.com/Inventario-app/back.git
+   cd back
+   ```
+
+2. **Install Dependencies**:
+
+```bash
+    npm install
+```
+
+3. **Configure MySQL Database** :
+   Ensure MySQL is installed and running on your machine.
+
+4. **Modify your .env File** :
+
+```
+Set up your .env file with the following variables:
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=password ---> Your password to your Mysql Db.
+DB_NAME=inventario --> the name of your database
+JWT_SECRET=your_jwt_secret_key ----> preferably a randomized  string.
+PORT=3000 ---> the default Port
+```
+
+4. **Populate the Database**:
+
+   ```bash
+   npm run seed
+   ```
+
+   This will make sure to create your DB if it doesnt exist, with the schema
+   proposed and populated with some dummy data.
+
+5. **Start Server**:
+
+   ```bash
+   npm start
+   ```
+
+   - The server will start on the specified port (default is 3000).
+
+6. **OPTIONAL:Delete dummy data**:
+
+```bash
+ npm run deleteDummy
+```
+
 ## Data Schema Visualization:
 
 ### 1.Location Table
@@ -89,42 +149,6 @@ to help track inventory items, transactions, and users in a kitchen.
 
 - Transaction 1: Alice added 10 units of Rice in the Main Kitchen.
 - Transaction 2: Bob removed 5 units of Sugar in the Main Kitchen.
-
-## Installation
-
-1. **Clone the Repository**:
-
-   ```bash
-   git clone https://github.com/Inventario-app/back.git
-   cd back
-   ```
-
-2. **Install Dependencies**:
-
-```bash
-    npm install
-```
-
-3. **Configure MySQL Database** :
-
-Create a MySQL database for the project.
-
-```
-Set up your .env file with the following variables:
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=password
-DB_NAME=inventario
-JWT_SECRET=your_jwt_secret_ke
-PORT=3000
-```
-
-4. ** Start Server**:
-   ```bash
-   npm start
-   ```
-
-- The server will start on the specified port (default is 3000).
 
 ## API Usage
 

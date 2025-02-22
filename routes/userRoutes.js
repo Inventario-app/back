@@ -87,7 +87,11 @@ export default [
 
       // Generate JWT token
       const token = Jwt.token.generate(
-        { id: user.id, role: user.role },
+        {
+          id: user.id,
+          role: user.role,
+          name: user.name,
+        },
         process.env.JWT_SECRET,
         { ttlSec: 3600 }, // Token expiration time (1 hour)
       );

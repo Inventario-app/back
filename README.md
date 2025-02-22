@@ -154,6 +154,26 @@ PORT=3000 ---> the default Port
 
 The API provides the following endpoints:
 
+### Loggin in
+
+**POST/login** Get a JWT for the user
+-Request Body:
+
+```json
+{
+  "email": "jane@banana.com",
+  "password": "banana"
+}
+```
+
+-Response:
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6InN0YWZmIiwiaWF0IjoxNzQwMjYzOTQzLCJleHAiOjE3NDAyNjc1NDN9.YbJvDJ8rx2Wk6lJ3woxDRAS91vavNzjNhvgEWf1YULk"
+}
+```
+
 ### User Management
 
 **GET /users**: Retrieve a list of all users.

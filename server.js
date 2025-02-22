@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import models from "./models/index.js";
 import Jwt from "@hapi/jwt";
 import routes from "./routes/index.js";
-console.clear();
 
 dotenv.config();
 
@@ -11,6 +10,11 @@ const init = async () => {
   const server = Hapi.server({
     port: process.env.PORT || 3000,
     host: "localhost",
+    routes: {
+      cors: {
+        origin: ["*"],
+      },
+    },
   });
 
   // Database sync

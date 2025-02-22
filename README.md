@@ -170,7 +170,10 @@ The API provides the following endpoints:
 
 ```json
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6InN0YWZmIiwiaWF0IjoxNzQwMjYzOTQzLCJleHAiOjE3NDAyNjc1NDN9.YbJvDJ8rx2Wk6lJ3woxDRAS91vavNzjNhvgEWf1YULk"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6InN0YWZmIiwiaWF0IjoxNzQwMjY2MzIwLCJleHAiOjE3NDAyNjk5MjB9.5PYRZkLHGgofnOlc6aGG_cx-6qDW0TrGtsxqw34e5cE",
+  "id": 3,
+  "role": "staff",
+  "name": "Jane Banana"
 }
 ```
 

@@ -90,13 +90,17 @@ export default [
         {
           id: user.id,
           role: user.role,
-          name: user.name,
         },
         process.env.JWT_SECRET,
         { ttlSec: 3600 }, // Token expiration time (1 hour)
       );
 
-      return h.response({ token });
+      return h.response({
+        token,
+        id: user.id,
+        role: user.role,
+        name: user.userName,
+      });
     },
   },
 
